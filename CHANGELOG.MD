@@ -42,3 +42,21 @@ All notable changes to this project will be documented in this file.
 
 
 - Links: Verified and updated external links to GitHub and LinkedIn for better professional alignment .
+
+## [1.1.9] - 2026-02-28
+
+### Changed
+- Projects page: The old projects were deleted to update the page with new more professional projects. The page is now under construction.
+
+### Added - To Projects page
+
+- Coming Soon: Updated the projects placeholder with a list of projects that are yet to be completed.
+
+- Tech Stack Summary: Added a summary of the tech stack used in the projects, including Java, Spring Boot, Spring Data JPA, JavaScript (ES6+), HTML5, CSS3, SQL, REST APIs, Node.js, and Git.
+
+- Technical Roadmap: Documented current and future learning objectives, including API, Database, and Security integration.
+
+
+- Milestone Tracking: Updated the projects placeholder with a quarterly development schedule to provide transparency for recruiters.
+
+- Github Repository: Added a link to the GitHub repository for easy access to the project codebase while it's under construction.

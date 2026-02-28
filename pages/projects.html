@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tony Martz | Projects</title>
+  <link rel="stylesheet" href="../stylesheets/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .projects-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .page-header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .page-header h1 {
+      color: #b80b17;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 i {
+      margin-right: 0.5rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background-color: #ff6600;
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .intro {
+      text-align: center;
+      margin: 2rem 0 3rem;
+    }
+
+    .intro p {
+      color: #ababab;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    .section-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .section-card h2 {
+      color: #b80b17;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-card h2 i {
+      font-size: 1.2rem;
+    }
+
+    .coming-soon-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .coming-soon-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #ababab;
+    }
+
+    .coming-soon-list li::before {
+      content: '\f0da';
+      font-family: FontAwesome;
+      color: #ff6600;
+      position: absolute;
+      left: 0;
+    }
+
+    .coming-soon-list li strong {
+      color: #ff6600;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-tag {
+      background: rgba(255, 102, 0, 0.15);
+      color: #ff6600;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 102, 0, 0.3);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .timeline-quarter {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 3px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-quarter.current {
+      border-left-color: #ff6600;
+    }
+
+    .timeline-quarter.upcoming {
+      border-left-color: #ababab;
+    }
+
+    .quarter-dot {
+      position: absolute;
+      left: -0.6rem;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      border: 3px solid #000;
+    }
+
+    .timeline-quarter.current .quarter-dot {
+      background-color: #ff6600;
+    }
+
+    .timeline-quarter.upcoming .quarter-dot {
+      background-color: #ababab;
+    }
+
+    .quarter-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-quarter.current .quarter-label {
+      background-color: rgba(255, 102, 0, 0.15);
+      color: #ff6600;
+    }
+
+    .timeline-quarter.upcoming .quarter-label {
+      background-color: rgba(171, 171, 171, 0.15);
+      color: #ababab;
+    }
+
+    .quarter-title {
+      color: #ff6600;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-quarter.upcoming .quarter-title {
+      color: #ababab;
+    }
+
+    .timeline-items {
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-items li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #ababab;
+    }
+
+    .timeline-items li::before {
+      font-family: FontAwesome;
+      position: absolute;
+      left: 0;
+    }
+
+    .timeline-quarter.current .timeline-items li::before {
+      content: '\f0da';
+      color: #ff6600;
+    }
+
+    .timeline-quarter.upcoming .timeline-items li::before {
+      content: '\f10c';
+      color: #ababab;
+      font-size: 0.6rem;
+      top: 0.35rem;
+    }
+
+    .timeline-items li strong {
+      color: #ff6600;
+    }
+
+    .timeline-quarter.upcoming .timeline-items li strong {
+      color: #ababab;
+    }
+
+    @media screen and (min-width: 768px) {
+      .timeline {
+        flex-direction: row;
+        gap: 0;
+        border-left: none;
+      }
+
+      .timeline-quarter {
+        flex: 1;
+        border-left: none;
+        border-top: 3px solid rgba(255, 255, 255, 0.1);
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+
+      .timeline-quarter.current {
+        border-top-color: #ff6600;
+      }
+
+      .timeline-quarter.upcoming {
+        border-top-color: #ababab;
+      }
+
+      .quarter-dot {
+        left: 0;
+        top: -0.6rem;
+      }
+
+      .timeline-quarter:not(:first-child) {
+        padding-left: 2rem;
+      }
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background-color: #ff6600;
+      color: #000;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-bottom: 60px;
+    }
+
+    .btn-github:hover {
+      background-color: #b80b17;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-github i {
+      font-size: 1.4rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer small {
+      color: #ababab;
+      font-size: 0.9rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .page-header h1 {
+        font-size: 3.5rem;
+      }
+
+      .status-badge {
+        background-color: #b80;
+      }
+
+      .coming-soon-list li::before {
+        color: #b80;
+      }
+
+      .coming-soon-list li strong {
+        color: #b80;
+      }
+
+      .tech-tag {
+        background: rgba(187, 136, 0, 0.15);
+        color: #b80;
+        border-color: rgba(187, 136, 0, 0.3);
+      }
+
+      .timeline-quarter.current {
+        border-left-color: #b80;
+      }
+
+      .timeline-quarter.current .quarter-dot {
+        background-color: #b80;
+      }
+
+      .timeline-quarter.current .quarter-label {
+        background-color: rgba(187, 136, 0, 0.15);
+        color: #b80;
+      }
+
+      .quarter-title {
+        color: #b80;
+      }
+
+      .timeline-quarter.upcoming .quarter-title {
+        color: #ababab;
+      }
+
+      .timeline-quarter.current .timeline-items li::before {
+        color: #b80;
+      }
+
+      .timeline-items li strong {
+        color: #b80;
+      }
+
+      .timeline-quarter.upcoming .timeline-items li strong {
+        color: #ababab;
+      }
+
+      @media screen and (min-width: 768px) {
+        .timeline-quarter.current {
+          border-top-color: #b80;
+        }
+      }
+
+      .btn-github {
+        background-color: #b80;
+      }
+
+      .btn-github:hover {
+        background-color: #b80b17;
+        color: #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="temporary-project.html" class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="javascript:void(0);" id="burger-menu" class="icon" onclick="myFunction()">
+      T.Martz
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="projects-page">
+
+      <header class="page-header">
+        <h1><i class="fa fa-code"></i> Projects</h1>
+        <span class="status-badge"><i class="fa fa-cog fa-spin"></i> Build: In Progress</span>
+      </header>
+
+      <section class="intro">
+        <p>
+          I am currently refactoring my project portfolio to better showcase the full-stack architecture
+          of my recent builds in Java and Spring Boot. In the meantime, you can explore my active
+          repositories and commit history directly on GitHub.
+        </p>
+      </section>
+
+      <section class="section-card">
+        <h2><i class="fa fa-rocket"></i> Coming Soon</h2>
+        <ul class="coming-soon-list">
+          <li><strong>Spring Social Media Blog API</strong> &mdash; A full-stack backend API built with Spring Boot,
+            Spring Data JPA, and Spring Web for user authentication and messaging CRUD operations.</li>
+          <li><strong>Trade Tracker</strong> &mdash; A trade journaling application for logging,
+            analyzing, and visualizing trading performance data.</li>
+          <li><strong>Portfolio Website</strong> &mdash; This site &mdash; a responsive, mobile-first portfolio
+            built from scratch with HTML, CSS, and JavaScript.</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <h2><i class="fa fa-wrench"></i> Tech Stack Summary</h2>
+        <div class="tech-grid">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">Spring Boot</span>
+          <span class="tech-tag">Spring Data JPA</span>
+          <span class="tech-tag">JavaScript (ES6+)</span>
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">REST APIs</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Git</span>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2><i class="fa fa-map-signs"></i> Project Roadmap</h2>
+        <div class="timeline">
+          <div class="timeline-quarter current">
+            <span class="quarter-dot"></span>
+            <span class="quarter-label"><i class="fa fa-cog fa-spin"></i> Current Focus</span>
+            <h3 class="quarter-title">Q1 2026</h3>
+            <ul class="timeline-items">
+              <li><strong>Portfolio Refactor</strong> &mdash; Migrating all project case studies to a responsive,
+                grid-based architecture.</li>
+              <li><strong>Advanced Java &amp; Spring</strong> &mdash; Deepening expertise in API development, Database integration,
+                and REST API security.</li>
+            </ul>
+          </div>
+          <div class="timeline-quarter upcoming">
+            <span class="quarter-dot"></span>
+            <span class="quarter-label"><i class="fa fa-clock-o"></i> Upcoming Milestones</span>
+            <h3 class="quarter-title">Q2 2026</h3>
+            <ul class="timeline-items">
+              <li><strong>Database Integration</strong> &mdash; Implementing PostgreSQL for data storage and querying for the Trade Tracker project.</li>
+              <li><strong>Authentication and Security</strong> &mdash; Enhancing API security and user authentication using Auth0 for the Trade Tracker project.</li>
+              <li><strong>Live Deployment</strong> &mdash; Deploying the Trade Tracker project to a production environment.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <a href="https://github.com/anthony-developer-FS" class="btn-github" target="_blank">
+          <i class="fa fa-github"></i> Explore My Code on GitHub
+        </a>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>&copy; 2026 Tony Martz.</small>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>

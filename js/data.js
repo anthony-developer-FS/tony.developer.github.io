@@ -1,6 +1,7 @@
 // Site content lives here so updates never require touching the layout.
 // To add a project, add one object to `projects`. Set `featured: true` on
-// the one you want in the big tile.
+// the one you want in the big tile; give it an `image` screenshot or
+// `highlights` to fill the preview area.
 
 const PORTFOLIO = {
   profile: {
@@ -8,25 +9,23 @@ const PORTFOLIO = {
     email: "Tony.Martz.Developer@gmail.com",
     github: "https://github.com/anthony-developer-FS",
     linkedin: "https://www.linkedin.com/in/tony-developer/",
-    resume: "pages/resume.html",
+    resume: "assets/Tony-Martz-Resume.pdf",
   },
 
   projects: [
     {
-      title: "Trade Tracker",
-      featured: true,
-      stack: ["JavaScript", "HTML", "CSS"],
-      description:
-        "A trade journal for logging, analyzing and visualizing trading performance, with a dashboard, calendar view, trade history, CSV import and an analytics page.",
-      image: "projects/web/Trade-Tracker/assets/Landing-Page.png",
-      demo: "projects/web/Trade-Tracker/index.html",
-      code: "",
-    },
-    {
       title: "Social Media Blog API",
-      stack: ["Java", "Spring Boot", "JPA"],
+      featured: true,
+      stack: ["Java", "Spring Boot", "Spring Data JPA"],
       description:
         "A REST API for registration, login and message CRUD, migrated to Spring for dependency injection and JPA persistence.",
+      // Shown in the featured tile when there is no screenshot.
+      highlights: {
+        auth: "registration + login",
+        messages: "create, read, update, delete",
+        framework: "Spring Boot + Spring Web",
+        persistence: "Spring Data JPA",
+      },
       demo: "",
       code: "",
     },

@@ -1,7 +1,8 @@
 // Site content lives here so updates never require touching the layout.
 // To add a project, add one object to `projects`. Set `featured: true` on
 // the one you want in the big tile; give it an `image` screenshot or
-// `highlights` to fill the preview area.
+// `highlights` to fill the preview area. A `writeup` (overview, built,
+// optional learned) adds a Details button that opens a longer description.
 
 const PORTFOLIO = {
   profile: {
@@ -26,6 +27,13 @@ const PORTFOLIO = {
         framework: "Spring Boot + Spring Web",
         persistence: "Spring Data JPA",
       },
+      // Longer write-up shown in the project's Details dialog.
+      writeup: {
+        overview:
+          "The backend for a small social media app. Users register and log in, then post messages and read, update or delete them through REST endpoints.",
+        built:
+          "I moved the application onto the Spring Framework: Spring Web handles the endpoints, dependency injection wires the controllers to the services and repositories, and Spring Data JPA takes care of saving and querying accounts and messages.",
+      },
       demo: "",
       code: "",
     },
@@ -33,15 +41,27 @@ const PORTFOLIO = {
       title: "Simon Game",
       stack: ["JavaScript", "jQuery"],
       description:
-        "The classic memory game in the browser, with growing color sequences and sound.",
+        "The classic memory game: each level adds a color, and you repeat the whole sequence to keep going.",
+      writeup: {
+        overview:
+          "A browser version of Simon. Each level flashes one more color, and the player has to repeat the entire sequence from the start. One wrong press ends the game.",
+        built:
+          "The game keeps two arrays, the generated pattern and the player's presses, and checks each press against the pattern at the same position. When the arrays match in length, the next level starts after a short pause. jQuery runs the flash and press animations, and each color plays its own sound. On phones and tablets the game detects a touch device and starts with a tap instead of a key press.",
+      },
       demo: "projects/web/Simon%20Game/index.html",
       code: "",
     },
     {
       title: "Drum Kit",
-      stack: ["JavaScript"],
+      stack: ["JavaScript", "DOM events"],
       description:
-        "A playable drum kit that responds to clicks and key presses with sound.",
+        "Seven drum pads you can play by clicking or with the W, A, S, D, J, K and L keys.",
+      writeup: {
+        overview:
+          "A playable drum kit with four toms, a snare, a crash and a kick drum. Each pad responds to a mouse click or to its key on the keyboard.",
+        built:
+          "One function maps each key to its sound with a switch statement. Click and keydown listeners both call it, then add a short pressed animation to the matching pad.",
+      },
       demo: "projects/web/Drum%20Kit/index.html",
       code: "",
     },
@@ -49,7 +69,15 @@ const PORTFOLIO = {
       title: "Recipe Page",
       stack: ["HTML", "CSS"],
       description:
-        "A responsive recipe layout built close to a design spec, mobile first.",
+        "A Frontend Mentor challenge: a recipe page built to match a design, mobile first, with no CSS framework.",
+      writeup: {
+        overview:
+          "A solution to Frontend Mentor's Recipe page challenge, where the goal is to match a provided design as closely as possible.",
+        built:
+          "Semantic HTML and plain CSS with no framework, laid out mobile first. A media query caps the content at 900px on large screens and centers it on the page.",
+        learned:
+          "How to center elements reliably, especially the power of margin: 0 auto, which I want to keep practicing.",
+      },
       demo: "projects/web/recipe-page/index.html",
       code: "",
     },

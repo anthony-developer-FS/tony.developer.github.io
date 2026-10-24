@@ -77,21 +77,31 @@ function projectTile(p) {
 
 const sorted = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
 document
-  .getElementById("work")
+  .querySelector(".projects-start")
   .insertAdjacentHTML(
     "afterend",
     sorted.map((p) => (p.featured ? featuredTile(p) : projectTile(p))).join("")
   );
 
+// The first project tile is the "Work" nav target and carries the section
+// heading for screen readers.
+const firstProject = document.querySelector(".tile--project");
+if (firstProject) {
+  firstProject.id = "work";
+  firstProject.insertAdjacentHTML("afterbegin", '<h2 class="visually-hidden">Projects</h2>');
+}
+
 // ===== Skills tabs =====
 const tabList = document.querySelector(".tabs");
 const chipList = document.querySelector(".chips");
+const skillsPanel = document.getElementById("skills-panel");
 const categories = Object.keys(skills);
 
 function showSkills(category) {
   tabList.querySelectorAll(".tab").forEach((tab) => {
     const selected = tab.dataset.category === category;
     tab.setAttribute("aria-selected", selected);
+    if (selected) skillsPanel.setAttribute("aria-labelledby", tab.id);
     tab.tabIndex = selected ? 0 : -1;
   });
   chipList.innerHTML = skills[category]
@@ -102,7 +112,7 @@ function showSkills(category) {
 tabList.innerHTML = categories
   .map(
     (c) =>
-      `<button class="tab" type="button" role="tab" data-category="${c}">${c}</button>`
+      `<button class="tab" type="button" role="tab" id="tab-${c.toLowerCase()}" aria-controls="skills-panel" data-category="${c}">${c}</button>`
   )
   .join("");
 

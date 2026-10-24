@@ -6,15 +6,53 @@
     <meta name="author" content="Tony Martz" />
     <meta
       name="description"
-      content="Tony Martz, software engineer. Java, Spring Boot and JavaScript projects, skills and experience."
+      content="Tony Martz is a software engineer and Computer Science senior at SNHU building with Java, Spring Boot and JavaScript. Projects, skills, experience and resume."
     />
+    <link rel="canonical" href="https://anthony-developer-fs.github.io/tony.developer.github.io/" />
+
+    <!-- Social share preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tony Martz" />
     <meta property="og:title" content="Tony Martz | Software Engineer" />
     <meta
       property="og:description"
       content="Projects, skills and experience of Tony Martz, a software engineer building with Java, Spring Boot and JavaScript."
     />
-    <meta property="og:image" content="assets/JuanM_Face.jpg" />
-    <meta name="theme-color" content="#E8EBF0" />
+    <meta property="og:url" content="https://anthony-developer-fs.github.io/tony.developer.github.io/" />
+    <meta property="og:image" content="https://anthony-developer-fs.github.io/tony.developer.github.io/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tony Martz, software engineer. Open to SWE roles and internships." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Icons -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#E8EBF0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E0F13" media="(prefers-color-scheme: dark)" />
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tony Martz",
+        "jobTitle": "Software Engineer",
+        "url": "https://anthony-developer-fs.github.io/tony.developer.github.io/",
+        "email": "mailto:Tony.Martz.Developer@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Mesa", "addressRegion": "AZ" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Southern New Hampshire University" },
+          { "@type": "CollegeOrUniversity", "name": "Mesa Community College" }
+        ],
+        "knowsAbout": ["Java", "Spring Boot", "JavaScript", "SQL", "REST APIs"],
+        "sameAs": [
+          "https://github.com/anthony-developer-FS",
+          "https://www.linkedin.com/in/tony-developer/"
+        ]
+      }
+    </script>
     <title>Tony Martz | Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -90,7 +128,7 @@
         </div>
 
         <!-- Projects get rendered here by js/main.js from js/data.js -->
-        <span id="work" class="anchor"></span>
+        <span class="projects-start anchor"></span>
 
         <!-- Skills -->
         <section id="skills" class="tile tile--skills w2 reveal">
@@ -98,7 +136,9 @@
             <h2>Skills</h2>
             <div class="tabs" role="tablist" aria-label="Skill category"></div>
           </div>
-          <ul class="chips" role="tabpanel" aria-live="polite"></ul>
+          <div class="skills-panel" id="skills-panel" role="tabpanel" aria-live="polite">
+            <ul class="chips"></ul>
+          </div>
         </section>
 
         <!-- Experience -->

@@ -608,15 +608,8 @@ h2 {
 }
 
 /* GitHub */
-.tile--github {
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
 .tile--github svg {
-  align-self: flex-start;
-  order: 2;
+  align-self: flex-end;
 }
 
 /* Footer */
@@ -710,4 +703,10 @@ h2 {
 
 .tile--contact .label {
   color: var(--accent);
+}
+
+.edu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px 24px;
 }

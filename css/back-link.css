@@ -1,0 +1,29 @@
+/* "Back to portfolio" pill shown on the resume page and project demos. */
+.back-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #16161d;
+  color: #ffffff;
+  font: 600 15px/1 "Space Grotesk", system-ui, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease;
+}
+
+.back-link:hover {
+  transform: translateY(-2px);
+}
+
+.back-link:focus-visible {
+  outline: 3px solid #ff7a59;
+  outline-offset: 3px;
+}

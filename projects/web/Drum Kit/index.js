@@ -51,14 +51,21 @@ for (let i = 0; i < numberOfDrumButtons; i++) {
         buttonAnimation(buttonInnerHTML);
         
     });
-    document.addEventListener("keydown", function(event) {
-        makeSound(event.key);
-        buttonAnimation(event.key);
-    })
 }
 
+// One keyboard listener for the whole page (adding it inside the loop
+// played every sound seven times).
+document.addEventListener("keydown", function(event) {
+    makeSound(event.key);
+    buttonAnimation(event.key);
+});
+
 function buttonAnimation(currentKey) {
-    let activeButton = document.querySelector("." + currentKey);
+    // Only single letters can match a pad; other keys (Shift, "/", ...) are
+    // ignored so they don't break the selector.
+    if (!/^[a-z]$/.test(currentKey)) return;
+    let activeButton = document.querySelector(".drum." + currentKey);
+    if (!activeButton) return;
     activeButton.classList.add("pressed");
     setTimeout(function() {
         activeButton.classList.remove("pressed");

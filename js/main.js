@@ -28,16 +28,21 @@ function tagList(stack) {
   return `<ul class="tags">${stack.map((s) => `<li>${s}</li>`).join("")}</ul>`;
 }
 
-function projectLinks(p) {
-  const items = [];
-  if (p.demo) items.push(`<a href="${p.demo}">Live demo ↗</a>`);
+function detailsButton(p, index) {
+  if (!p.writeup) return "";
+  return `<button class="details-btn" type="button" data-project="${index}" aria-haspopup="dialog">Details</button>`;
+}
+
+function projectLinks(p, index) {
+  const items = [detailsButton(p, index)];
+  if (p.demo) items.push(`<a href="${p.demo}" aria-label="${p.title} live demo">Demo ↗</a>`);
   items.push(
-    `<a href="${p.code || profile.github}" target="_blank" rel="noopener noreferrer">View code →</a>`
+    `<a href="${p.code || profile.github}" target="_blank" rel="noopener noreferrer" aria-label="${p.title} code">Code →</a>`
   );
   return `<div class="project-links">${items.join("")}</div>`;
 }
 
-function featuredTile(p) {
+function featuredTile(p, index) {
   const href = p.demo || p.code || profile.github;
   let shot = "";
   if (p.image) {
@@ -59,11 +64,14 @@ function featuredTile(p) {
         <h3>${p.title}</h3>
         <p>${p.description}</p>
       </div>
-      ${tagList(p.stack)}
+      <div class="featured-foot">
+        ${tagList(p.stack)}
+        ${detailsButton(p, index)}
+      </div>
     </article>`;
 }
 
-function projectTile(p) {
+function projectTile(p, index) {
   return `
     <article class="tile tile--project reveal">
       ${tagList(p.stack)}
@@ -71,7 +79,7 @@ function projectTile(p) {
         <h3>${p.title}</h3>
         <p>${p.description}</p>
       </div>
-      ${projectLinks(p)}
+      ${projectLinks(p, index)}
     </article>`;
 }
 
@@ -80,7 +88,7 @@ document
   .querySelector(".projects-start")
   .insertAdjacentHTML(
     "afterend",
-    sorted.map((p) => (p.featured ? featuredTile(p) : projectTile(p))).join("")
+    sorted.map((p, i) => (p.featured ? featuredTile(p, i) : projectTile(p, i))).join("")
   );
 
 // The first project tile is the "Work" nav target and carries the section
@@ -90,6 +98,40 @@ if (firstProject) {
   firstProject.id = "work";
   firstProject.insertAdjacentHTML("afterbegin", '<h2 class="visually-hidden">Projects</h2>');
 }
+
+// ===== Project details dialog =====
+const dialog = document.querySelector(".project-dialog");
+const dialogBody = dialog.querySelector(".dialog-body");
+
+function openDetails(p) {
+  const w = p.writeup;
+  const section = (title, text) => (text ? `<h3>${title}</h3><p>${text}</p>` : "");
+  const links = [];
+  if (p.demo) links.push(`<a class="btn btn--solid" href="${p.demo}">Live demo ↗</a>`);
+  links.push(
+    `<a class="btn btn--outline" href="${p.code || profile.github}" target="_blank" rel="noopener noreferrer">View code →</a>`
+  );
+  dialogBody.innerHTML = `
+    ${tagList(p.stack)}
+    <h2 id="dialog-title">${p.title}</h2>
+    ${section("Overview", w.overview)}
+    ${section("How I built it", w.built)}
+    ${section("What I learned", w.learned)}
+    <div class="btn-row">${links.join("")}</div>`;
+  dialog.showModal();
+}
+
+document.getElementById("main").addEventListener("click", (e) => {
+  const btn = e.target.closest(".details-btn");
+  if (btn) openDetails(sorted[Number(btn.dataset.project)]);
+});
+
+dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+
+// Clicking the backdrop (outside the panel) closes the dialog.
+dialog.addEventListener("click", (e) => {
+  if (e.target === dialog) dialog.close();
+});
 
 // ===== Skills tabs =====
 const tabList = document.querySelector(".tabs");

@@ -77,7 +77,7 @@ Update the URLs that point at the GitHub Pages address: the `canonical`, `og:url
 
 ## Recent Updates
 
-See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes.
+See [CHANGELOG.MD](CHANGELOG.MD) for a detailed history of changes.
 
 ## Author
 

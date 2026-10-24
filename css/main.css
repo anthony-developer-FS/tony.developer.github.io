@@ -471,6 +471,28 @@ h2 {
   object-position: top;
 }
 
+.code-panel {
+  flex: 1 1 200px;
+  margin: 0;
+  padding: 24px;
+  border-radius: 18px;
+  background: #26262f;
+  color: var(--dark-tile-soft);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.code-panel .k {
+  color: var(--accent);
+}
+
+.code-panel .v {
+  color: #ffffff;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;

@@ -39,16 +39,22 @@ function projectLinks(p) {
 
 function featuredTile(p) {
   const href = p.demo || p.code || profile.github;
-  const shot = p.image
-    ? `<img src="${p.image}" alt="Screenshot of ${p.title}" loading="lazy" />`
-    : "";
+  let shot = "";
+  if (p.image) {
+    shot = `<div class="shot"><img src="${p.image}" alt="Screenshot of ${p.title}" loading="lazy" /></div>`;
+  } else if (p.highlights) {
+    const rows = Object.entries(p.highlights)
+      .map(([key, value]) => `  <span class="k">${key}</span>: <span class="v">"${value}"</span>`)
+      .join(",\n");
+    shot = `<pre class="code-panel" aria-label="${p.title} highlights">{\n${rows}\n}</pre>`;
+  }
   return `
     <article class="tile tile--project tile--featured w2 h2 reveal">
       <div class="featured-head">
         <span class="label">Featured project</span>
         <a class="round-link" href="${href}" aria-label="Open ${p.title}">${arrowIcon}</a>
       </div>
-      <div class="shot">${shot}</div>
+      ${shot}
       <div>
         <h3>${p.title}</h3>
         <p>${p.description}</p>

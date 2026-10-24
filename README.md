@@ -27,13 +27,12 @@ Hosted via GitHub Pages.
 ├── index.html          # Home page (bento grid)
 ├── css/
 │   ├── main.css        # Site styles and theme tokens
-│   └── back-link.css   # "Back to portfolio" link on demo pages
+│   └── back-link.css   # "Back to portfolio" link on project demos
 ├── js/
 │   ├── data.js         # Profile links, projects, skills, experience
 │   └── main.js         # Renders tiles, theme toggle, tabs, scroll reveal
-├── assets/             # Images
-├── pages/resume.html   # Web resume
-├── stylesheets/        # Legacy styles still used by the resume and demos
+├── assets/             # Photo and resume PDF
+├── stylesheets/        # Legacy styles still used by the project demos
 └── projects/web/       # Project demos
 ```
 

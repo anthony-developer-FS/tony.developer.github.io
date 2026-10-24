@@ -7,7 +7,7 @@ const PORTFOLIO = {
     name: "Tony Martz",
     email: "Tony.Martz.Developer@gmail.com",
     github: "https://github.com/anthony-developer-FS",
-    linkedin: "https://linkedin.com/in/obi-juan-kenobi",
+    linkedin: "https://www.linkedin.com/in/tony-developer/",
     resume: "pages/resume.html",
   },
 

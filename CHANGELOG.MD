@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2026-10-24
+
+### Redesign
+
+- Rebuilt the site as a single-page bento grid with light and dark themes, replacing the separate home, projects and contact pages
+- Projects, skills and experience now render from `js/data.js`
+- Project write-ups open in a Details dialog
+- One-page resume PDF replaces the web resume page
+- Favicon, social share preview, structured data and a 404 page
+- Accessibility fixes (axe-core reports no violations)
+
+### Removed
+
+- Old contact, projects, form-success and resume pages and their stylesheets
+- Trade Tracker (to be rebuilt)
+- Unused photos, including three with GPS location metadata
+
+### Fixed
+
+- Drum Kit played each sound seven times per key press
+
 ## [1.1.0] - 2026-02-23
 
 ### Resume Page — UI/UX Improvements
